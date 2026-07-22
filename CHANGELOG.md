@@ -19,6 +19,10 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/lang/es/).
 
 ### Changed
 
+- El check de placeholders escanea ahora **todos** los archivos versionados de texto
+  (LICENSE, workflows, `FUNDING.yml`, `CODEOWNERS.example`…), no solo `*.md` y
+  `.env.example`. Un placeholder olvidado en un archivo no-markdown ya no pasa CI en
+  verde al instanciar.
 - Las referencias al repositorio de origen apuntan ahora a
   `juanpablocabezas/plantillla_proyectos_ia`: el comando `degit` de instalación, el
   guardián de seguridad de `/instanciar` y el `.template-origin` que escribe
@@ -38,6 +42,11 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/lang/es/).
 - Los hooks `git-guardrails` y `secret-guardrails` ya no dependen de `python3`, que en
   Windows resuelve al stub de Microsoft Store y los desactivaba en silencio. Ahora usan
   `perl` (`JSON::PP` y `Text::ParseWords`, ambos core), incluido en Git for Windows.
+- `check-placeholders.sh` nunca detectaba los placeholders acentuados (`[AÑO]`,
+  `[TECNOLOGÍA]`, `[DECISIÓN_*]`…): el patrón de perl interpretaba su clase de
+  caracteres como bytes mientras `-CSD` decodificaba la entrada como UTF-8, así que
+  nunca coincidían. Con `-Mutf8` la detección funciona; afloraron 18 placeholders
+  acentuados que se añadieron al catálogo.
 
 ### Security
 

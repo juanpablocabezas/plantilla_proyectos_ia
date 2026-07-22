@@ -57,7 +57,7 @@ rm -rf .tpl
 Todos los placeholders usan el formato `[CORCHETES_EN_MAYÚSCULAS]`. Encuéntralos con:
 
 ```bash
-grep -rno '\[[A-ZÁÉÍÓÚÑ0-9_/]\+\]' --include='*.md' --include='.env.example' .
+grep -rno '\[[A-ZÁÉÍÓÚÑ0-9_/]\+\]' --exclude-dir=.git .
 ```
 
 ### Catálogo de placeholders
@@ -68,6 +68,7 @@ grep -rno '\[[A-ZÁÉÍÓÚÑ0-9_/]\+\]' --include='*.md' --include='.env.exampl
 | `[NOMBRE_EMPRESA]`                                                                                                     | Nombre de la empresa u organización                     |
 | `[AUTOR]`                                                                                                              | Nombre del autor o mantenedor principal                 |
 | `[USUARIO_GITHUB]`                                                                                                     | Usuario u organización de GitHub                        |
+| `[USUARIO_KOFI]`, `[USUARIO_PATREON]`                                                                                  | Usuarios en plataformas de patrocinio (FUNDING.yml)     |
 | `[URL_REPOSITORIO]`                                                                                                    | URL del repositorio                                     |
 | `[AÑO]`                                                                                                                | Año del copyright en la licencia                        |
 | `[VERSION]`                                                                                                            | Versión (de una dependencia o del proyecto)             |
@@ -77,20 +78,24 @@ grep -rno '\[[A-ZÁÉÍÓÚÑ0-9_/]\+\]' --include='*.md' --include='.env.exampl
 | `[RUNTIME]`                                                                                                            | Lenguaje/runtime (Node.js, Python, Ruby…)               |
 | `[GESTOR_DE_PAQUETES]`                                                                                                 | npm, pnpm, bundler, pip…                                |
 | `[BASE_DE_DATOS]`                                                                                                      | PostgreSQL, MySQL, MongoDB…                             |
+| `[IMAGEN_BASE_DE_DATOS]`                                                                                               | Imagen Docker de la base de datos para el CI            |
 | `[PUERTO]`                                                                                                             | Puerto local de desarrollo                              |
 | `[COMANDO_*]`                                                                                                          | Comandos del proyecto (instalar, test, build, deploy…)  |
 | `[URL_*]` (`[URL_DEV]`, `[URL_BASE_API]`…)                                                                             | URLs por ambiente y recursos web                        |
 | `[SERVICIO/API]`, `[LINK_*]`, `[OTROS_*]`                                                                              | Recursos específicos de tu proyecto                     |
 | `[HERRAMIENTA]`, `[HERRAMIENTA_*]`, `[OTRA_HERRAMIENTA]`                                                               | Herramientas del stack (build, test, e2e, migraciones…) |
 | `[FRAMEWORK_*]`, `[ORM]`, `[LINTER]`, `[FORMATEADOR]`                                                                  | Piezas del stack por rol                                |
+| `[TECNOLOGÍA]`, `[LIBRERÍA]`, `[LIBRERÍA_*]`, `[SOLUCIÓN_ESTILOS]`, `[ORQUESTACIÓN]`                                   | Más piezas del stack (por nombre o propósito)           |
 | `[CACHE]`, `[COLA]`, `[CONTENEDORES]`, `[CI_CD]`, `[MONITOREO]`, `[TTL]`                                               | Infraestructura y operaciones                           |
 | `[RUTA_*]`                                                                                                             | Rutas de carpetas/archivos del proyecto                 |
 | `[LAYOUT_*]`, `[LOCALE_*]`, `[AA/AAA]`                                                                                 | UI, i18n y nivel de accesibilidad objetivo              |
-| `[ENTIDAD_*]`, `[COMPONENTE_*]`, `[SERVICIO_*]`, `[ROL_*]`                                                             | Modelo de dominio y arquitectura                        |
+| `[ENTIDAD_*]`, `[COMPONENTE_*]`, `[SERVICIO_*]`, `[ROL_*]`, `[MÓDULO_*]`                                               | Modelo de dominio y arquitectura                        |
 | `[SEGMENTO_*]`, `[PLAN_*]`, `[PRECIO]`, `[PORCENTAJE]`                                                                 | Modelo de negocio                                       |
-| `[ELEGIDA]`, `[DESCARTADA]`, `[ALTERNATIVA]`                                                                           | Comparativas en decisiones (stack, diseño)              |
+| `[ELEGIDA]`, `[DESCARTADA]`, `[ALTERNATIVA]`, `[DECISIÓN_*]`                                                           | Comparativas en decisiones (stack, diseño)              |
+| `[TÉRMINO_*]`                                                                                                          | Entradas del glosario                                   |
 | `[HERRAMIENTA_IA]`, `[EMAIL_HERRAMIENTA_IA]`                                                                           | Herramienta de IA y su email (trailer de coautoría)     |
 | `[TIPO]`, `[OTRO]`, `[EJEMPLO]`, `[COMANDO]`, `[NOMBRES]`, `[PROVEEDOR]`, `[RECURSO]`, `[RIESGO]`, `[OTRAS_VARIABLES]` | Descriptivos locales de cada documento                  |
+| `[CÓDIGO]`, `[SOLUCIÓN]`, `[MENSAJE_DE_ERROR_COMÚN]`, `[LONGITUD_LÍNEA]`, `[DEFINIR_POLÍTICA_DE_SOPORTE]`              | Descriptivos locales (con acentos)                      |
 
 > Mantén este catálogo actualizado: cualquier `[PLACEHOLDER]` nuevo que introduzcas debería
 > aparecer aquí — el CI lo verifica con `.github/scripts/check-placeholders.sh`.

@@ -21,28 +21,37 @@ CATALOG="TEMPLATE-USAGE.md"
 
 # Rutas que se saltan en ambos modos:
 #   - esqueletos que conservan placeholders a propósito (plantillas de docs);
-#   - .github/ (sus corchetes son prefijos de títulos de issue como "[BUG] …");
+#   - las plantillas de issues (sus corchetes son prefijos de título como "[BUG] …");
+#   - .github/scripts/ (el tooling: menciona placeholders como texto de ejemplo);
 #   - .claude/ (instrucciones para agentes, no documentación del proyecto).
-SKIP='^(\.github/|\.claude/|docs/conventions/_template\.md|docs/decisions/0000-template\.md|specs/_template/)'
+# Todo lo demás versionado se escanea, incluidos LICENSE, workflows y FUNDING.yml —
+# un placeholder olvidado en un archivo no-markdown es tan real como en un .md.
+SKIP='^(\.github/ISSUE_TEMPLATE/.*\.md$|\.github/scripts/|\.claude/|docs/conventions/_template\.md|docs/decisions/0000-template\.md|specs/_template/)'
 
 # Menciones "meta" sobre el propio sistema de placeholders (no son placeholders
 # que haya que rellenar; aparecen en instrucciones de la plantilla).
 META='^(PLACEHOLDER|PLACEHOLDERS|CORCHETES_EN_MAYÚSCULAS)$'
 
 # Extrae placeholders [MAYÚSCULAS] de un archivo, ignorando los enlaces
-# markdown `[TEXTO](destino)` gracias al lookahead negativo.
+# markdown `[TEXTO](destino)` gracias al lookahead negativo. El -Mutf8 es
+# imprescindible: sin él, la clase del patrón ([Á-Ñ…]) se interpreta como bytes
+# sueltos mientras -CSD decodifica la entrada como caracteres, y los
+# placeholders acentuados como [AÑO] pasan sin detectarse.
 extract() {
-  perl -CSD -ne 'while (/\[([A-ZÁÉÍÓÚÑ0-9_\/]{2,})\](?!\()/g) { print "$ARGV:$.: [$1]\n" }' "$1"
+  perl -CSD -Mutf8 -ne 'while (/\[([A-ZÁÉÍÓÚÑ0-9_\/]{2,})\](?!\()/g) { print "$ARGV:$.: [$1]\n" }' "$1"
 }
 
 files() {
-  git ls-files '*.md' '.env.example' | grep -Ev "$SKIP" || true
+  git ls-files | grep -Ev "$SKIP" | while IFS= read -r f; do
+    # Solo archivos de texto: los binarios no llevan placeholders.
+    grep -Iq . "$f" 2>/dev/null && printf '%s\n' "$f" || true
+  done
 }
 
 if [ -f "$CATALOG" ]; then
   # ── Modo PLANTILLA: consistencia del catálogo ──────────────────────────────
   # Prefijos comodín documentados en el catálogo, p. ej. `[COMANDO_*]` → COMANDO_.
-  wildcards="$(perl -CSD -ne 'while (/\[([A-ZÁÉÍÓÚÑ0-9_\/]+_)\*\]/g) { print "$1\n" }' "$CATALOG" | sort -u)"
+  wildcards="$(perl -CSD -Mutf8 -ne 'while (/\[([A-ZÁÉÍÓÚÑ0-9_\/]+_)\*\]/g) { print "$1\n" }' "$CATALOG" | sort -u)"
 
   missing=0
   placeholders="$(
