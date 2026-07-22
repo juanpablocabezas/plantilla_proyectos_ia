@@ -43,5 +43,7 @@ No se incluyen por defecto; créalas con `_template.md` si tu proyecto las neces
 - **Escritorio**: empaquetado e instaladores por SO, code signing y notarización,
   auto-update, telemetría / reporte de crashes.
 
-> Ver [`TEMPLATE-USAGE.md`](../../TEMPLATE-USAGE.md) § "Adaptar por tipo de proyecto"
-> para qué borrar y qué reenfocar según sea web, móvil o escritorio.
+> Qué borrar y qué reenfocar según sea web, móvil o escritorio está en
+> [`TEMPLATE-USAGE.md` § "Adaptar por tipo de proyecto"](https://github.com/juanpablocabezas/plantilla_proyectos_ia/blob/main/TEMPLATE-USAGE.md)
+> de la plantilla de origen. El enlace es absoluto a propósito: ese archivo se borra al
+> instanciar, y uno relativo dejaría el CI en rojo.

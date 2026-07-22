@@ -140,9 +140,9 @@ grep -rno '\[[A-ZÁÉÍÓÚÑ0-9_/]\+\]' --exclude-dir=.git .
 - Los workflows de ejemplo en `.github/workflows/` si no usas GitHub Actions. Los
   workflows **activos** (`quality.yml`, `secret-scan.yml`) funcionan en cualquier stack —
   consérvalos si usas GitHub Actions.
-- **Siempre** borra lo exclusivo del repo-plantilla: `.github/workflows/template-parity.yml`,
-  `.github/scripts/check-parity.sh` y la skill `portar-cambio` (la skill `/instanciar`
-  lo hace por ti).
+- **Siempre** borra este archivo (`TEMPLATE-USAGE.md`) al terminar: es lo que hace que
+  `check-placeholders.sh` pase del modo PLANTILLA al modo INSTANCIA y verifique que no
+  quede ningún placeholder sin rellenar.
 
 ## 6. `architecture/X.md` vs `conventions/X.md`
 
