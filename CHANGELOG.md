@@ -44,6 +44,20 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/lang/es/).
 
 ### Fixed
 
+- **Todo proyecto instanciado fallaba el job "Enlaces internos" en su primera corrida de
+  CI.** Dos enlaces relativos apuntaban a archivos que la propia guía manda borrar o
+  renombrar: `docs/conventions/README.md` → `../../TEMPLATE-USAGE.md` (siempre se borra;
+  es lo que activa el modo INSTANCIA del checker) y `.github/workflows/README.md` →
+  `ci.example.yml` (siempre se renombra a `ci.yml`). Ahora el primero es un enlace
+  absoluto al repo de origen y el segundo se menciona sin enlazar. Detectado con el
+  ensayo de instanciación completo, no con los checks del repo — que pasaban en verde.
+- `.github/workflows/README.md` afirmaba que la extensión `.example` impide que GitHub
+  ejecute `ci.example.yml`. Es falso: Actions registra cualquier `.yml` de la carpeta y
+  el workflow aparece como `[active]`. Corregido, con la advertencia de no marcar sus
+  jobs vacíos (`Lint`, `Tests`, `Build`) como checks requeridos.
+- `TEMPLATE-USAGE.md` §5 mandaba borrar `template-parity.yml`, `check-parity.sh` y la
+  skill `portar-cambio`, eliminados en esta misma versión. La instrucción se reemplazó
+  por la que de verdad importa: borrar `TEMPLATE-USAGE.md` al terminar.
 - Los hooks `git-guardrails` y `secret-guardrails` ya no dependen de `python3`, que en
   Windows resuelve al stub de Microsoft Store y los desactivaba en silencio. Ahora usan
   `perl` (`JSON::PP` y `Text::ParseWords`, ambos core), incluido en Git for Windows.
