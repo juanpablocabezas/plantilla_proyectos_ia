@@ -36,7 +36,7 @@ git init
 git checkout -b chore/adopt-doc-template
 
 # Descargar la plantilla sin su historial
-npx degit juanpablocabezas/plantillla_proyectos_ia .tpl
+npx degit juanpablocabezas/plantilla_proyectos_ia .tpl
 
 # Traer la documentación, las plantillas de GitHub y la capa de IA (copia selectiva)
 cp -R .tpl/docs .
@@ -68,7 +68,6 @@ grep -rno '\[[A-ZÁÉÍÓÚÑ0-9_/]\+\]' --exclude-dir=.git .
 | `[NOMBRE_EMPRESA]`                                                                                                     | Nombre de la empresa u organización                     |
 | `[AUTOR]`                                                                                                              | Nombre del autor o mantenedor principal                 |
 | `[USUARIO_GITHUB]`                                                                                                     | Usuario u organización de GitHub                        |
-| `[USUARIO_KOFI]`, `[USUARIO_PATREON]`                                                                                  | Usuarios en plataformas de patrocinio (FUNDING.yml)     |
 | `[URL_REPOSITORIO]`                                                                                                    | URL del repositorio                                     |
 | `[AÑO]`                                                                                                                | Año del copyright en la licencia                        |
 | `[VERSION]`                                                                                                            | Versión (de una dependencia o del proyecto)             |

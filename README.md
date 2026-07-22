@@ -39,8 +39,6 @@ Descripción breve y concisa del proyecto (1-2 líneas).
 - [Versionado](#versionado)
 - [Autores](#autores)
 - [Licencia](#licencia)
-- [Apóyanos](#apóyanos)
-- [Agradecimientos](#agradecimientos)
 
 ## Descripción
 
@@ -234,29 +232,8 @@ Usamos [Git](https://git-scm.com) para el control de versiones y seguimos [Seman
 
 - **[AUTOR]** — _Trabajo inicial_ — [@[USUARIO_GITHUB]](https://github.com/[USUARIO_GITHUB])
 
-Consulta también la lista de [contribuidores]([URL_REPOSITORIO]/contributors).
+Consulta también el historial de commits para ver quién ha trabajado en el proyecto.
 
 ## Licencia
 
 Este proyecto está bajo la licencia [MIT](LICENSE).
-
-## Apóyanos
-
-Si este proyecto te resulta útil y quieres apoyar su desarrollo:
-
-- [GitHub Sponsors](https://github.com/sponsors/[USUARIO_GITHUB])
-- [Ko-fi](https://ko-fi.com/[USUARIO_GITHUB])
-- [Patreon](https://patreon.com/[USUARIO_GITHUB])
-
-## Agradecimientos
-
-Gracias a quienes contribuyen a este proyecto. Si encuentras valor en él, puedes:
-
-- Compartir el proyecto 📤
-- Invitar un café ☕
-- Abrir un issue o PR 🙌
-- Dejar tu agradecimiento con un comentario 💬
-
----
-
-⌨️ con ❤️ por [@[USUARIO_GITHUB]](https://github.com/[USUARIO_GITHUB])

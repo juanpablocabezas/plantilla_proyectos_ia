@@ -20,11 +20,11 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/lang/es/).
 ### Changed
 
 - El check de placeholders escanea ahora **todos** los archivos versionados de texto
-  (LICENSE, workflows, `FUNDING.yml`, `CODEOWNERS.example`…), no solo `*.md` y
+  (LICENSE, workflows, `dependabot.yml`, `CODEOWNERS.example`…), no solo `*.md` y
   `.env.example`. Un placeholder olvidado en un archivo no-markdown ya no pasa CI en
   verde al instanciar.
 - Las referencias al repositorio de origen apuntan ahora a
-  `juanpablocabezas/plantillla_proyectos_ia`: el comando `degit` de instalación, el
+  `juanpablocabezas/plantilla_proyectos_ia`: el comando `degit` de instalación, el
   guardián de seguridad de `/instanciar` y el `.template-origin` que escribe
   `/actualizar-plantilla`.
 
@@ -36,6 +36,11 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/lang/es/).
   el script `check-parity.sh` y la skill `/portar-cambio`. Solo servían para sincronizar
   la familia de cuatro repositorios (es/en × con/sin IA) de la plantilla de origen, que
   esta plantilla no tiene.
+- El andamiaje pensado para contribuidores externos anónimos, que no aplica a proyectos
+  con un equipo conocido: `FUNDING.yml` y las secciones "Apóyanos"/"Agradecimientos" del
+  `README.md`, la plantilla de issue `support_question.md`, el enlace de contacto a
+  Discussions y la etiqueta `good first issue`. La gobernanza para el equipo
+  (`CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`) se conserva intacta.
 
 ### Fixed
 
