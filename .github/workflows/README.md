@@ -15,9 +15,16 @@ Funcionan tal cual, sin importar el lenguaje del proyecto — no los borres al i
 
 ## Esqueleto incluido
 
-- [`ci.example.yml`](ci.example.yml) — pipeline de CI neutro (lint → test → build).
-  Tiene la extensión `.example` **a propósito** para que GitHub no lo ejecute.
-  Cuando lo adaptes a tu stack, renómbralo a `ci.yml`.
+- `ci.example.yml` — pipeline de CI neutro (lint → test → build). Cuando lo adaptes a
+  tu stack, renómbralo a `ci.yml` (por eso aquí se menciona sin enlace: tras renombrarlo
+  el enlace quedaría roto).
+
+  > **GitHub sí lo ejecuta.** El `.example` del nombre no lo desactiva: Actions registra
+  > cualquier `.yml` de esta carpeta. Sus pasos están comentados, así que los tres jobs
+  > (`Lint`, `Tests`, `Build`) pasan vacíos hasta que los completes. Por eso **no los
+  > pongas como checks requeridos** en la protección de rama antes de rellenarlos: al
+  > reemplazar este archivo por tu CI real, los contexts requeridos dejarían de
+  > reportarse y los PRs se quedarían bloqueados esperándolos.
 
 ## Workflows recomendados
 
