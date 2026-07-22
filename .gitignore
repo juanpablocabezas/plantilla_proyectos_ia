@@ -29,6 +29,8 @@ tmp/
 # ── Sistema operativo ─────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
+# Metadato que Windows añade a los archivos copiados desde otra máquina o WSL.
+*:Zone.Identifier
 
 # ── Editores / IDE ────────────────────────────────────────────────────────
 .idea/
