@@ -15,7 +15,7 @@ difiere de los pasos de abajo.
 Detente y avisa si estás sobre el REPO-FUENTE del template (no una instancia):
 
 - Revisa `git remote -v`. Si el origin es el repositorio de la plantilla
-  (`plantillla_proyectos_ia`), NO instancies: estarías destruyendo la plantilla.
+  (`plantilla_proyectos_ia`), NO instancies: estarías destruyendo la plantilla.
 - En ese caso, pregunta explícitamente si de verdad se quiere modificar la plantilla
   original antes de continuar.
 

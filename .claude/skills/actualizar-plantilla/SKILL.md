@@ -13,7 +13,7 @@ origen. Solo toca la capa reutilizable — nunca la documentación ya rellenada 
 Lee `.template-origin` en la raíz (lo escribe `/instanciar`):
 
 ```
-repo=https://github.com/juanpablocabezas/plantillla_proyectos_ia
+repo=https://github.com/juanpablocabezas/plantilla_proyectos_ia
 commit=<sha-de-la-plantilla-al-instanciar>
 fecha=YYYY-MM-DD
 ```

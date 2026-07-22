@@ -32,7 +32,6 @@ Deben existir en el repositorio para que el labeler funcione.
 | `ready for merge`  | `#0E8A16` | Aprobado y listo para merge       |
 | `blocked`          | `#B60205` | Bloqueado por dependencias        |
 | `help wanted`      | `#008672` | Se necesita ayuda externa         |
-| `good first issue` | `#7057FF` | Bueno para nuevos contribuidores  |
 | `duplicate`        | `#CFD3D7` | Issue o PR duplicado              |
 | `invalid`          | `#E4E669` | No es válido o no procede         |
 | `wontfix`          | `#FFFFFF` | No se trabajará en esto           |
