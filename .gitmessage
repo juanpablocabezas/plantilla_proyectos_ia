@@ -1,0 +1,23 @@
+
+# ── Conventional Commits ──────────────────────────────────────────────────────
+# Todo lo que empieza por # se descarta. Borra o ignora lo que no necesites.
+#
+# Asunto (obligatorio): <tipo>(<ámbito opcional>): <descripción en imperativo>
+#   - En imperativo: "agrega", no "agregado" ni "agregando".
+#   - Sin punto final. Máximo ~72 caracteres.
+#
+# Cuerpo (opcional): el porqué del cambio, no el qué — el diff ya dice el qué.
+#   Separado del asunto por una línea en blanco.
+#
+# Footer (opcional):
+#   Closes #123                  vincula y cierra un issue
+#   BREAKING CHANGE: <qué rompe> cambio incompatible
+#   Co-Authored-By: Nombre <email>
+#
+# Tipos: feat · fix · docs · style · refactor · perf · test · build · ci · chore
+#
+# Los commits asistidos por IA llevan un trailer Co-Authored-By para que la
+# autoría sea transparente (docs/conventions/ai-agents.md).
+#
+# Guía completa: CONTRIBUTING.md § Commits y Mensajes
+# ──────────────────────────────────────────────────────────────────────────────

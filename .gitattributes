@@ -1,0 +1,24 @@
+# Normaliza los fines de línea: LF dentro del repositorio y en el directorio de
+# trabajo, en todos los sistemas operativos.
+#
+# Sin esto, en Windows (donde `core.autocrlf=true` es el valor por defecto de Git
+# for Windows) el repositorio se descarga con CRLF y dos cosas se rompen:
+#   - los scripts `.sh` quedan con un shebang terminado en \r y bash falla con
+#     "bad interpreter" — incluyendo los hooks de .claude/hooks/;
+#   - Prettier, que espera LF, marca todos los .md como mal formateados, y al
+#     formatear genera un diff de miles de líneas que solo cambia el fin de línea.
+
+* text=auto eol=lf
+
+# Binarios: Git no debe intentar convertir nada aquí.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.zip binary
