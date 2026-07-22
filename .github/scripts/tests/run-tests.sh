@@ -106,6 +106,29 @@ printf '# Mi proyecto\nVer [MIT](LICENSE).\n' >"$TMP/inst-ok/README.md"
 commit_all "$TMP/inst-ok"
 (bash "$CHECK_PLACEHOLDERS" "$TMP/inst-ok" >/dev/null); check "instancia: limpio → pasa" 0 $?
 
+# Modo plantilla: placeholder en archivo no-markdown (LICENSE), catalogado → pasa.
+make_repo tpl-nomd
+printf '| `[AÑO]` | año |\n' >"$TMP/tpl-nomd/TEMPLATE-USAGE.md"
+printf 'Copyright (c) [AÑO]\n' >"$TMP/tpl-nomd/LICENSE"
+commit_all "$TMP/tpl-nomd"
+(bash "$CHECK_PLACEHOLDERS" "$TMP/tpl-nomd" >/dev/null); check "plantilla: no-markdown catalogado → pasa" 0 $?
+
+# Modo instancia: pendiente en no-markdown y con acento ([AÑO] en LICENSE) → falla.
+# Cubre además la regresión de UTF-8: sin -Mutf8, los acentuados eran invisibles.
+make_repo inst-nomd
+printf 'Copyright (c) [AÑO] Nadie\n' >"$TMP/inst-nomd/LICENSE"
+printf '# limpio\n' >"$TMP/inst-nomd/README.md"
+commit_all "$TMP/inst-nomd"
+(bash "$CHECK_PLACEHOLDERS" "$TMP/inst-nomd" >/dev/null); check "instancia: no-markdown con acento pendiente → falla" 1 $?
+
+# Los prefijos de título de las plantillas de issues ("[BUG] …") no cuentan.
+make_repo inst-issues
+mkdir -p "$TMP/inst-issues/.github/ISSUE_TEMPLATE"
+printf -- '---\ntitle: "[BUG] resumen"\n---\n' >"$TMP/inst-issues/.github/ISSUE_TEMPLATE/bug_report.md"
+printf '# limpio\n' >"$TMP/inst-issues/README.md"
+commit_all "$TMP/inst-issues"
+(bash "$CHECK_PLACEHOLDERS" "$TMP/inst-issues" >/dev/null); check "instancia: prefijos de issue → pasa" 0 $?
+
 # ── check-links.sh ────────────────────────────────────────────────────────────
 echo "check-links.sh:"
 make_repo links-ok
